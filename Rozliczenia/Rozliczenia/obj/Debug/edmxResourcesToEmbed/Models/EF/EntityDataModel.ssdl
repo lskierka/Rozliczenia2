@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProdukcjaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Produkcja.dbo.vOferty' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vOferty">
+    <Key>
+      <PropertyRef Name="Oferta" />
+      <PropertyRef Name="KodOferty" />
+      <PropertyRef Name="LiczbaOkresow" />
+      <PropertyRef Name="Cena" />
+      <PropertyRef Name="CenaOferty" />
+      <PropertyRef Name="NazwaPakietu" />
+    </Key>
+    <Property Name="CenaOferty" Type="money" Nullable="false" />
+    <Property Name="Oferta" Type="varchar" MaxLength="500" Nullable="false" />
+    <Property Name="KodOferty" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="LiczbaOkresow" Type="int" Nullable="false" />
+    <Property Name="NazwaPakietu" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="Cena" Type="money" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Produkcja.dbo.vPokazParowanieNaleznosci' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vPokazParowanieNaleznosci">
+    <Key>
+      <PropertyRef Name="IdKontraktu" />
+      <PropertyRef Name="KwotaPartiiWplaty" />
+      <PropertyRef Name="IdWplaty" />
+      <PropertyRef Name="KwotaWplatyBankowej" />
+      <PropertyRef Name="Naleznosc" />
+    </Key>
+    <Property Name="IdKontraktu" Type="int" Nullable="false" />
+    <Property Name="KwotaWplatyBankowej" Type="varchar" MaxLength="25" Nullable="false" />
+    <Property Name="KwotaPartiiWplaty" Type="money" Nullable="false" />
+    <Property Name="Naleznosc" Type="varchar" MaxLength="281" Nullable="false" />
+    <Property Name="IdWplaty" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Produkcja.dbo.vPokazRozliczenieWplat' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vPokazRozliczenieWplat">
+    <Key>
+      <PropertyRef Name="IdKontraktu" />
+      <PropertyRef Name="KwotaWplatyBankowej" />
+      <PropertyRef Name="KwotaPartiiWplaty" />
+      <PropertyRef Name="KwotaNaleznosci" />
+      <PropertyRef Name="IdWplaty" />
+      <PropertyRef Name="DataWpisu" />
+      <PropertyRef Name="Usluga" />
+    </Key>
+    <Property Name="IdKontraktu" Type="int" Nullable="false" />
+    <Property Name="DataWpisu" Type="datetime" Nullable="false" />
+    <Property Name="KwotaWplatyBankowej" Type="money" Nullable="false" />
+    <Property Name="KwotaPartiiWplaty" Type="money" Nullable="false" />
+    <Property Name="Usluga" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="KwotaNaleznosci" Type="money" Nullable="false" />
+    <Property Name="IdWplaty" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Produkcja.dbo.vPokazWszystkieNaleznosci' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vPokazWszystkieNaleznosci">
+    <Key>
+      <PropertyRef Name="IdKontraktu" />
+      <PropertyRef Name="Kwota" />
+      <PropertyRef Name="KwotaRozliczona" />
+      <PropertyRef Name="idPartiiNaleznosci" />
+      <PropertyRef Name="Usluga" />
+      <PropertyRef Name="OkresDataOd" />
+      <PropertyRef Name="OkresDataDo" />
+      <PropertyRef Name="DoZaplaty" />
+    </Key>
+    <Property Name="IdKontraktu" Type="int" Nullable="false" />
+    <Property Name="Usluga" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="OkresDataOd" Type="datetime" Nullable="false" />
+    <Property Name="OkresDataDo" Type="datetime" Nullable="false" />
+    <Property Name="Kwota" Type="money" Nullable="false" />
+    <Property Name="KwotaRozliczona" Type="money" Nullable="false" />
+    <Property Name="DoZaplaty" Type="money" Nullable="false" />
+    <Property Name="idPartiiNaleznosci" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'Produkcja.dbo.vPokazWszystkieWplaty' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="vPokazWszystkieWplaty">
+    <Key>
+      <PropertyRef Name="IdKontraktu" />
+      <PropertyRef Name="Kwota" />
+      <PropertyRef Name="IdWplaty" />
+      <PropertyRef Name="DataWpisu" />
+      <PropertyRef Name="KwotaWolna" />
+    </Key>
+    <Property Name="IdKontraktu" Type="int" Nullable="false" />
+    <Property Name="DataWpisu" Type="datetime" Nullable="false" />
+    <Property Name="Kwota" Type="money" Nullable="false" />
+    <Property Name="KwotaWolna" Type="money" Nullable="false" />
+    <Property Name="IdWplaty" Type="int" Nullable="false" />
+  </EntityType>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="version" Type="int" Mode="In" />
+    <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+  </Function>
+  <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+    <Parameter Name="owner_id" Type="int" Mode="In" />
+    <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spBilingGenerujDowolnaNaleznosc" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inDebug" Type="int" Mode="In" />
+    <Parameter Name="inIdKontraktu" Type="int" Mode="In" />
+    <Parameter Name="inIdWytworu" Type="int" Mode="In" />
+    <Parameter Name="inLiczbaOkresow" Type="int" Mode="In" />
+    <Parameter Name="outKomunikat" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="spBilingGenerujNaleznosci" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inDebug" Type="int" Mode="In" />
+    <Parameter Name="inIdKontraktu" Type="int" Mode="In" />
+    <Parameter Name="outKomunikat" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="spBilingRozdzielWplateBankowa" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inDebug" Type="int" Mode="In" />
+    <Parameter Name="inIdWplatyBankowej" Type="int" Mode="In" />
+    <Parameter Name="outKomunikat" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="spBilingRozliczNaleznosciNierozliczone" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inDebug" Type="int" Mode="In" />
+    <Parameter Name="inIdKontraktu" Type="int" Mode="In" />
+    <Parameter Name="outKomunikat" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="spBilingWstawNowegoKlienta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inDebug" Type="int" Mode="In" />
+    <Parameter Name="inPESEL" Type="varchar" Mode="In" />
+    <Parameter Name="inNIP" Type="varchar" Mode="In" />
+    <Parameter Name="inCzyKlientBiznesowy" Type="bit" Mode="In" />
+    <Parameter Name="inImie" Type="varchar" Mode="In" />
+    <Parameter Name="inNazwisko" Type="varchar" Mode="In" />
+    <Parameter Name="inMiasto" Type="varchar" Mode="In" />
+    <Parameter Name="inUlica" Type="varchar" Mode="In" />
+    <Parameter Name="inKodPocztowy" Type="varchar" Mode="In" />
+    <Parameter Name="inNazwaFirmy" Type="varchar" Mode="In" />
+    <Parameter Name="outKomunikat" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="spBilingWstawWplateBankowaOnline" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inDebug" Type="int" Mode="In" />
+    <Parameter Name="inIdKontraktu" Type="int" Mode="In" />
+    <Parameter Name="inKwotaWplaty" Type="money" Mode="In" />
+    <Parameter Name="inTytulWplaty" Type="varchar" Mode="In" />
+    <Parameter Name="outKomunikat" Type="varchar" Mode="InOut" />
+  </Function>
+  <Function Name="spBilingZaladujNowaSprzedaz" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="inDebug" Type="int" Mode="In" />
+    <Parameter Name="inIdKlienta" Type="int" Mode="In" />
+    <Parameter Name="inIdOferty" Type="int" Mode="In" />
+    <Parameter Name="outKomunikat" Type="varchar" Mode="InOut" />
+  </Function>
+  <EntityContainer Name="ProdukcjaModelStoreContainer">
+    <EntitySet Name="vOferty" EntityType="Self.vOferty" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vOferty].[CenaOferty] AS [CenaOferty], 
+    [vOferty].[Oferta] AS [Oferta], 
+    [vOferty].[KodOferty] AS [KodOferty], 
+    [vOferty].[LiczbaOkresow] AS [LiczbaOkresow], 
+    [vOferty].[NazwaPakietu] AS [NazwaPakietu], 
+    [vOferty].[Cena] AS [Cena]
+    FROM [dbo].[vOferty] AS [vOferty]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vPokazParowanieNaleznosci" EntityType="Self.vPokazParowanieNaleznosci" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vPokazParowanieNaleznosci].[IdKontraktu] AS [IdKontraktu], 
+    [vPokazParowanieNaleznosci].[KwotaWplatyBankowej] AS [KwotaWplatyBankowej], 
+    [vPokazParowanieNaleznosci].[KwotaPartiiWplaty] AS [KwotaPartiiWplaty], 
+    [vPokazParowanieNaleznosci].[Naleznosc] AS [Naleznosc], 
+    [vPokazParowanieNaleznosci].[IdWplaty] AS [IdWplaty]
+    FROM [dbo].[vPokazParowanieNaleznosci] AS [vPokazParowanieNaleznosci]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vPokazRozliczenieWplat" EntityType="Self.vPokazRozliczenieWplat" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vPokazRozliczenieWplat].[IdKontraktu] AS [IdKontraktu], 
+    [vPokazRozliczenieWplat].[DataWpisu] AS [DataWpisu], 
+    [vPokazRozliczenieWplat].[KwotaWplatyBankowej] AS [KwotaWplatyBankowej], 
+    [vPokazRozliczenieWplat].[KwotaPartiiWplaty] AS [KwotaPartiiWplaty], 
+    [vPokazRozliczenieWplat].[Usluga] AS [Usluga], 
+    [vPokazRozliczenieWplat].[KwotaNaleznosci] AS [KwotaNaleznosci], 
+    [vPokazRozliczenieWplat].[IdWplaty] AS [IdWplaty]
+    FROM [dbo].[vPokazRozliczenieWplat] AS [vPokazRozliczenieWplat]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vPokazWszystkieNaleznosci" EntityType="Self.vPokazWszystkieNaleznosci" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vPokazWszystkieNaleznosci].[IdKontraktu] AS [IdKontraktu], 
+    [vPokazWszystkieNaleznosci].[Usluga] AS [Usluga], 
+    [vPokazWszystkieNaleznosci].[OkresDataOd] AS [OkresDataOd], 
+    [vPokazWszystkieNaleznosci].[OkresDataDo] AS [OkresDataDo], 
+    [vPokazWszystkieNaleznosci].[Kwota] AS [Kwota], 
+    [vPokazWszystkieNaleznosci].[KwotaRozliczona] AS [KwotaRozliczona], 
+    [vPokazWszystkieNaleznosci].[DoZaplaty] AS [DoZaplaty], 
+    [vPokazWszystkieNaleznosci].[idPartiiNaleznosci] AS [idPartiiNaleznosci]
+    FROM [dbo].[vPokazWszystkieNaleznosci] AS [vPokazWszystkieNaleznosci]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vPokazWszystkieWplaty" EntityType="Self.vPokazWszystkieWplaty" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vPokazWszystkieWplaty].[IdKontraktu] AS [IdKontraktu], 
+    [vPokazWszystkieWplaty].[DataWpisu] AS [DataWpisu], 
+    [vPokazWszystkieWplaty].[Kwota] AS [Kwota], 
+    [vPokazWszystkieWplaty].[KwotaWolna] AS [KwotaWolna], 
+    [vPokazWszystkieWplaty].[IdWplaty] AS [IdWplaty]
+    FROM [dbo].[vPokazWszystkieWplaty] AS [vPokazWszystkieWplaty]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

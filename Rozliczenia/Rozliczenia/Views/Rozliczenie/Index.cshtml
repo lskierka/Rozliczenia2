@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Rozliczenia.Models.RozliczenieViewModel>
+
+@{
+    ViewBag.Title = "Rozliczenie - szczegóły";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<table border 1px solid black;>
+    <tr bgcolor = 1E90FF font color =FFFFFF;>
+        <th width="80">
+            @Html.DisplayNameFor(model => model.IdKontraktu)
+        </th>
+        <th width="200">
+            @Html.DisplayNameFor(model => model.DataWpisu)
+        </th>
+        <th width="150">
+            @Html.DisplayNameFor(model => model.KwotaWplatyBankowej)
+        </th>
+        <th width="150">
+            @Html.DisplayNameFor(model => model.KwotaPartiiWplaty)
+        </th>
+        <th width="240">
+            @Html.DisplayNameFor(model => model.Usluga)
+        </th>
+        <th width="150">
+            @Html.DisplayNameFor(model => model.KwotaNaleznosci)
+        </th>
+        <th width="100">
+            @Html.DisplayNameFor(model => model.IdWplaty)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td width="80">
+                @Html.DisplayFor(modelItem => item.IdKontraktu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataWpisu)
+            </td>
+            <td width="150">
+                @Html.DisplayFor(modelItem => item.KwotaWplatyBankowej)
+            </td>
+            <td width="150">
+                @Html.DisplayFor(modelItem => item.KwotaPartiiWplaty)
+            </td>
+            <td width="240">
+                @Html.DisplayFor(modelItem => item.Usluga)
+            </td>
+            <td width="150">
+                @Html.DisplayFor(modelItem => item.KwotaNaleznosci)
+            </td>
+            <td width="100">
+                @Html.DisplayFor(modelItem => item.IdWplaty)
+            </td>
+        </tr>
+    }
+
+</table>

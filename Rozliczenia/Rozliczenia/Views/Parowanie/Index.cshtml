@@ -1,0 +1,82 @@
+﻿@model IEnumerable<Rozliczenia.Models.ParowanieViewModel>
+
+@{
+    ViewBag.Title = "Parowanie należności";
+}
+
+<head>
+    
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['sankey'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+
+
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'From');
+            data.addColumn('string', 'To');
+            data.addColumn('number', 'Weight');
+            
+            // List<T> data = new List<T>();
+
+   
+             
+
+
+            data.addRow(
+              ['A', 'X', 5]);
+            data.addRows([
+              ['A', 'Y', 7],
+              ['A', 'Z', 6],
+              ['B', 'X', 2],
+              ['B', 'Y', 9],
+              ['B', 'Z', 4]
+            ]);
+         
+            // Sets chart options.
+            var options = {
+                width: 600,
+            };
+
+            // Instantiates and draws our chart, passing in some options.
+            var chart = new google.visualization.Sankey(document.getElementById('sankey_basic'));
+            chart.draw(data, options);
+        }
+    </script>
+
+<script>
+
+
+</script>
+
+
+
+</head>
+<body>
+    <div id="sankey_basic" style="width: 900px; height: 300px;"></div>
+</body>
+
+<table >
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.KwotaWplatyBankowej),</td>
+      
+            <td>@Html.DisplayFor(modelItem => item.KwotaPartiiWplaty),</td>
+      
+            <td>@Html.DisplayFor(modelItem => item.Naleznosc)</td>
+        </tr>
+       
+       // @Html.DisplayFor(modelItem => item.KwotaPartiiWplaty)
+       // @Html.DisplayFor(modelItem => item.Naleznosc)
+    }
+   
+
+</table>
+
+
+

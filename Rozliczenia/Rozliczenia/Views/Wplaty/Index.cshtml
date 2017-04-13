@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Rozliczenia.Models.WplatyViewModel>
+
+@{
+    ViewBag.Title = "Wplaty";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<br />
+<br />
+<table border 1px solid black;>
+    <tr bgcolor=1E90FF font color=FFFFFF;>
+        <th width="150">
+            @Html.DisplayNameFor(model => model.IdKontraktu)
+        </th>
+        <th width="200">
+            @Html.DisplayNameFor(model => model.DataWpisu)
+        </th>
+        <th width="150">
+            @Html.DisplayNameFor(model => model.Kwota)
+        </th>
+        <th width="150">
+            @Html.DisplayNameFor(model => model.KwotaWolna)
+        </th>
+        <th width="150">
+            @Html.DisplayNameFor(model => model.IdWplaty)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td width="150">
+                @Html.DisplayFor(modelItem => item.IdKontraktu)
+            </td>
+            <td width="200">
+                @Html.DisplayFor(modelItem => item.DataWpisu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kwota)
+            </td>
+            <td width="150">
+                @Html.DisplayFor(modelItem => item.KwotaWolna)
+            </td>
+            <td width="150">
+                @Html.DisplayFor(modelItem => item.IdWplaty)
+            </td>
+        </tr>
+    }
+
+</table>
