@@ -1,0 +1,235 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProdukcjaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="vOferty">
+    <Key>
+      <PropertyRef Name="Oferta" />
+      <PropertyRef Name="KodOferty" />
+      <PropertyRef Name="LiczbaOkresow" />
+      <PropertyRef Name="Cena" />
+      <PropertyRef Name="CenaOferty" />
+      <PropertyRef Name="NazwaPakietu" />
+    </Key>
+    <Property Name="CenaOferty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Oferta" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="KodOferty" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LiczbaOkresow" Type="Int32" Nullable="false" />
+    <Property Name="NazwaPakietu" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cena" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vPokazParowanieNaleznosci">
+    <Key>
+      <PropertyRef Name="IdKontraktu" />
+      <PropertyRef Name="KwotaPartiiWplaty" />
+      <PropertyRef Name="IdWplaty" />
+      <PropertyRef Name="KwotaWplatyBankowej" />
+      <PropertyRef Name="Naleznosc" />
+    </Key>
+    <Property Name="IdKontraktu" Type="Int32" Nullable="false" />
+    <Property Name="KwotaWplatyBankowej" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="KwotaPartiiWplaty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Naleznosc" Type="String" MaxLength="281" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="IdWplaty" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vPokazRozliczenieWplat">
+    <Key>
+      <PropertyRef Name="IdKontraktu" />
+      <PropertyRef Name="KwotaWplatyBankowej" />
+      <PropertyRef Name="KwotaPartiiWplaty" />
+      <PropertyRef Name="KwotaNaleznosci" />
+      <PropertyRef Name="IdWplaty" />
+      <PropertyRef Name="DataWpisu" />
+      <PropertyRef Name="Usluga" />
+    </Key>
+    <Property Name="IdKontraktu" Type="Int32" Nullable="false" />
+    <Property Name="DataWpisu" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="KwotaWplatyBankowej" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="KwotaPartiiWplaty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="Usluga" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="KwotaNaleznosci" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="IdWplaty" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vPokazWszystkieNaleznosci">
+    <Key>
+      <PropertyRef Name="IdKontraktu" />
+      <PropertyRef Name="Kwota" />
+      <PropertyRef Name="KwotaRozliczona" />
+      <PropertyRef Name="idPartiiNaleznosci" />
+      <PropertyRef Name="Usluga" />
+      <PropertyRef Name="OkresDataOd" />
+      <PropertyRef Name="OkresDataDo" />
+      <PropertyRef Name="DoZaplaty" />
+    </Key>
+    <Property Name="IdKontraktu" Type="Int32" Nullable="false" />
+    <Property Name="Usluga" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="OkresDataOd" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="OkresDataDo" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="Kwota" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="KwotaRozliczona" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="DoZaplaty" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="idPartiiNaleznosci" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vPokazWszystkieWplaty">
+    <Key>
+      <PropertyRef Name="IdKontraktu" />
+      <PropertyRef Name="Kwota" />
+      <PropertyRef Name="IdWplaty" />
+      <PropertyRef Name="DataWpisu" />
+      <PropertyRef Name="KwotaWolna" />
+    </Key>
+    <Property Name="IdKontraktu" Type="Int32" Nullable="false" />
+    <Property Name="DataWpisu" Type="DateTime" Precision="3" Nullable="false" />
+    <Property Name="Kwota" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="KwotaWolna" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+    <Property Name="IdWplaty" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="ProdukcjaEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="vOferty" EntityType="Self.vOferty" />
+    <EntitySet Name="vPokazParowanieNaleznosci" EntityType="Self.vPokazParowanieNaleznosci" />
+    <EntitySet Name="vPokazRozliczenieWplat" EntityType="Self.vPokazRozliczenieWplat" />
+    <EntitySet Name="vPokazWszystkieNaleznosci" EntityType="Self.vPokazWszystkieNaleznosci" />
+    <EntitySet Name="vPokazWszystkieWplaty" EntityType="Self.vPokazWszystkieWplaty" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(ProdukcjaModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(ProdukcjaModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+    <FunctionImport Name="spBilingGenerujDowolnaNaleznosc" ReturnType="Collection(ProdukcjaModel.spBilingGenerujDowolnaNaleznosc_Result)">
+      <Parameter Name="inDebug" Mode="In" Type="Int32" />
+      <Parameter Name="inIdKontraktu" Mode="In" Type="Int32" />
+      <Parameter Name="inIdWytworu" Mode="In" Type="Int32" />
+      <Parameter Name="inLiczbaOkresow" Mode="In" Type="Int32" />
+      <Parameter Name="outKomunikat" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spBilingGenerujNaleznosci" ReturnType="Collection(ProdukcjaModel.spBilingGenerujNaleznosci_Result)">
+      <Parameter Name="inDebug" Mode="In" Type="Int32" />
+      <Parameter Name="inIdKontraktu" Mode="In" Type="Int32" />
+      <Parameter Name="outKomunikat" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spBilingRozdzielWplateBankowa" ReturnType="Collection(ProdukcjaModel.spBilingRozdzielWplateBankowa_Result)">
+      <Parameter Name="inDebug" Mode="In" Type="Int32" />
+      <Parameter Name="inIdWplatyBankowej" Mode="In" Type="Int32" />
+      <Parameter Name="outKomunikat" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spBilingRozliczNaleznosciNierozliczone" ReturnType="Collection(ProdukcjaModel.spBilingRozliczNaleznosciNierozliczone_Result)">
+      <Parameter Name="inDebug" Mode="In" Type="Int32" />
+      <Parameter Name="inIdKontraktu" Mode="In" Type="Int32" />
+      <Parameter Name="outKomunikat" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spBilingWstawNowegoKlienta" ReturnType="Collection(ProdukcjaModel.spBilingWstawNowegoKlienta_Result)">
+      <Parameter Name="inDebug" Mode="In" Type="Int32" />
+      <Parameter Name="inPESEL" Mode="In" Type="String" />
+      <Parameter Name="inNIP" Mode="In" Type="String" />
+      <Parameter Name="inCzyKlientBiznesowy" Mode="In" Type="Boolean" />
+      <Parameter Name="inImie" Mode="In" Type="String" />
+      <Parameter Name="inNazwisko" Mode="In" Type="String" />
+      <Parameter Name="inMiasto" Mode="In" Type="String" />
+      <Parameter Name="inUlica" Mode="In" Type="String" />
+      <Parameter Name="inKodPocztowy" Mode="In" Type="String" />
+      <Parameter Name="inNazwaFirmy" Mode="In" Type="String" />
+      <Parameter Name="outKomunikat" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spBilingWstawWplateBankowaOnline" ReturnType="Collection(ProdukcjaModel.spBilingWstawWplateBankowaOnline_Result)">
+      <Parameter Name="inDebug" Mode="In" Type="Int32" />
+      <Parameter Name="inIdKontraktu" Mode="In" Type="Int32" />
+      <Parameter Name="inKwotaWplaty" Mode="In" Type="Decimal" />
+      <Parameter Name="inTytulWplaty" Mode="In" Type="String" />
+      <Parameter Name="outKomunikat" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spBilingZaladujNowaSprzedaz" ReturnType="Collection(ProdukcjaModel.spBilingZaladujNowaSprzedaz_Result)">
+      <Parameter Name="inDebug" Mode="In" Type="Int32" />
+      <Parameter Name="inIdKlienta" Mode="In" Type="Int32" />
+      <Parameter Name="inIdOferty" Mode="In" Type="Int32" />
+      <Parameter Name="outKomunikat" Mode="InOut" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="AspNetUsers" EntityType="ProdukcjaModel.AspNetUsers" />
+  </EntityContainer>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="spBilingGenerujDowolnaNaleznosc_Result">
+    <Property Type="String" Name="NazwaTransakcji" Nullable="true" MaxLength="40" />
+    <Property Type="Byte" Name="CzyTransakcja" Nullable="true" />
+    <Property Type="String" Name="SavePoint" Nullable="true" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="spBilingGenerujNaleznosci_Result">
+    <Property Type="String" Name="NazwaTransakcji" Nullable="true" MaxLength="40" />
+    <Property Type="Byte" Name="CzyTransakcja" Nullable="true" />
+    <Property Type="String" Name="SavePoint" Nullable="true" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="spBilingRozdzielWplateBankowa_Result">
+    <Property Type="String" Name="NazwaTransakcji" Nullable="true" MaxLength="40" />
+    <Property Type="Byte" Name="CzyTransakcja" Nullable="true" />
+    <Property Type="String" Name="SavePoint" Nullable="true" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="spBilingRozliczNaleznosciNierozliczone_Result">
+    <Property Type="String" Name="NazwaTransakcji" Nullable="true" MaxLength="40" />
+    <Property Type="Byte" Name="CzyTransakcja" Nullable="true" />
+    <Property Type="String" Name="SavePoint" Nullable="true" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="spBilingWstawNowegoKlienta_Result">
+    <Property Type="String" Name="NazwaTransakcji" Nullable="true" MaxLength="40" />
+    <Property Type="Byte" Name="CzyTransakcja" Nullable="true" />
+    <Property Type="String" Name="SavePoint" Nullable="true" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="spBilingWstawWplateBankowaOnline_Result">
+    <Property Type="String" Name="NazwaTransakcji" Nullable="true" MaxLength="40" />
+    <Property Type="Byte" Name="CzyTransakcja" Nullable="true" />
+    <Property Type="String" Name="SavePoint" Nullable="true" MaxLength="40" />
+  </ComplexType>
+  <ComplexType Name="spBilingZaladujNowaSprzedaz_Result">
+    <Property Type="String" Name="NazwaTransakcji" Nullable="true" MaxLength="40" />
+    <Property Type="Byte" Name="CzyTransakcja" Nullable="true" />
+    <Property Type="String" Name="SavePoint" Nullable="true" MaxLength="40" />
+  </ComplexType>
+  <EntityType Name="AspNetUsers">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="IdKontraktu" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

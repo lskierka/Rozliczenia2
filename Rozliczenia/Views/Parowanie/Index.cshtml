@@ -1,0 +1,89 @@
+﻿@model IEnumerable<Rozliczenia.Models.ParowanieViewModel>
+
+@{
+    ViewBag.Title = "Parowanie należności";
+}
+
+@for (int i = 0; i < Model.ToList().Count; i++)
+{
+    @Html.HiddenFor(Model => Model.ToList().ElementAt(i).KwotaPartiiWplaty, new { id = "KwotaPartiiWplaty" + i })
+    @Html.HiddenFor(Model => Model.ToList().ElementAt(i).KwotaWplatyBankowej, new { id = "KwotaWplatyBankowej" + i })
+    @Html.HiddenFor(Model => Model.ToList().ElementAt(i).Naleznosc, new { id = "Naleznosc" + i })
+}
+@Html.Hidden("modelSize",Model.ToList().Count, new{id="modelSize"})
+
+<head>
+    <br />
+    <br />
+
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['sankey'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+
+
+
+        function drawChart() {
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'From');
+            data.addColumn('string', 'To');
+            data.addColumn('number', 'Kwota');
+
+            // List<T> data = new List<T>();
+
+
+            for (var i = 0; i < $("#modelSize").val(); i++) {
+                data.addRow(
+                  [$("#KwotaWplatyBankowej" + i).val(), $("#Naleznosc" + i).val(),parseInt($("#KwotaPartiiWplaty" + i).val(),10)]);
+            }
+
+            //data.addRow(
+            //  ['A', 'X', 5]);
+            //data.addRows([
+            //  ['A', 'Y', 7],
+            //  ['A', 'Z', 6],
+            //  ['B', 'X', 2],
+            //  ['B', 'Y', 9],
+            //  ['B', 'Z', 4]
+            //]);
+
+            // Sets chart options.
+            var colors = ['#a6cee3', '#b2df8a', '#fb9a99', '#fdbf6f',
+                     '#cab2d6', '#ffff99', '#1f78b4', '#33a02c','#001100'];
+
+            var options = {
+                height: 400,
+                sankey: {
+                    node: {
+                        colors: colors
+                    },
+                    link: {
+                        colorMode: 'gradient',
+                        colors: colors
+                    }
+                }
+            };
+
+            // Instantiates and draws our chart, passing in some options.
+            var chart = new google.visualization.Sankey(document.getElementById('sankey_basic'));
+            chart.draw(data, options);
+        }
+    </script>
+
+    <script>
+
+
+    </script>
+
+
+
+</head>
+<body>
+    <div id="sankey_basic" style="width: 900px; height: 100%;"></div>
+</body>
+
+
+
+
+

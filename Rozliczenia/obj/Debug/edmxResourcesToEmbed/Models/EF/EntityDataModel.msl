@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProdukcjaModelStoreContainer" CdmEntityContainer="ProdukcjaEntities">
+    <EntitySetMapping Name="vOferty">
+      <EntityTypeMapping TypeName="ProdukcjaModel.vOferty">
+        <MappingFragment StoreEntitySet="vOferty">
+          <ScalarProperty Name="CenaOferty" ColumnName="CenaOferty" />
+          <ScalarProperty Name="Oferta" ColumnName="Oferta" />
+          <ScalarProperty Name="KodOferty" ColumnName="KodOferty" />
+          <ScalarProperty Name="LiczbaOkresow" ColumnName="LiczbaOkresow" />
+          <ScalarProperty Name="NazwaPakietu" ColumnName="NazwaPakietu" />
+          <ScalarProperty Name="Cena" ColumnName="Cena" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vPokazParowanieNaleznosci">
+      <EntityTypeMapping TypeName="ProdukcjaModel.vPokazParowanieNaleznosci">
+        <MappingFragment StoreEntitySet="vPokazParowanieNaleznosci">
+          <ScalarProperty Name="IdKontraktu" ColumnName="IdKontraktu" />
+          <ScalarProperty Name="KwotaWplatyBankowej" ColumnName="KwotaWplatyBankowej" />
+          <ScalarProperty Name="KwotaPartiiWplaty" ColumnName="KwotaPartiiWplaty" />
+          <ScalarProperty Name="Naleznosc" ColumnName="Naleznosc" />
+          <ScalarProperty Name="IdWplaty" ColumnName="IdWplaty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vPokazRozliczenieWplat">
+      <EntityTypeMapping TypeName="ProdukcjaModel.vPokazRozliczenieWplat">
+        <MappingFragment StoreEntitySet="vPokazRozliczenieWplat">
+          <ScalarProperty Name="IdKontraktu" ColumnName="IdKontraktu" />
+          <ScalarProperty Name="DataWpisu" ColumnName="DataWpisu" />
+          <ScalarProperty Name="KwotaWplatyBankowej" ColumnName="KwotaWplatyBankowej" />
+          <ScalarProperty Name="KwotaPartiiWplaty" ColumnName="KwotaPartiiWplaty" />
+          <ScalarProperty Name="Usluga" ColumnName="Usluga" />
+          <ScalarProperty Name="KwotaNaleznosci" ColumnName="KwotaNaleznosci" />
+          <ScalarProperty Name="IdWplaty" ColumnName="IdWplaty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vPokazWszystkieNaleznosci">
+      <EntityTypeMapping TypeName="ProdukcjaModel.vPokazWszystkieNaleznosci">
+        <MappingFragment StoreEntitySet="vPokazWszystkieNaleznosci">
+          <ScalarProperty Name="IdKontraktu" ColumnName="IdKontraktu" />
+          <ScalarProperty Name="Usluga" ColumnName="Usluga" />
+          <ScalarProperty Name="OkresDataOd" ColumnName="OkresDataOd" />
+          <ScalarProperty Name="OkresDataDo" ColumnName="OkresDataDo" />
+          <ScalarProperty Name="Kwota" ColumnName="Kwota" />
+          <ScalarProperty Name="KwotaRozliczona" ColumnName="KwotaRozliczona" />
+          <ScalarProperty Name="DoZaplaty" ColumnName="DoZaplaty" />
+          <ScalarProperty Name="idPartiiNaleznosci" ColumnName="idPartiiNaleznosci" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vPokazWszystkieWplaty">
+      <EntityTypeMapping TypeName="ProdukcjaModel.vPokazWszystkieWplaty">
+        <MappingFragment StoreEntitySet="vPokazWszystkieWplaty">
+          <ScalarProperty Name="IdKontraktu" ColumnName="IdKontraktu" />
+          <ScalarProperty Name="DataWpisu" ColumnName="DataWpisu" />
+          <ScalarProperty Name="Kwota" ColumnName="Kwota" />
+          <ScalarProperty Name="KwotaWolna" ColumnName="KwotaWolna" />
+          <ScalarProperty Name="IdWplaty" ColumnName="IdWplaty" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="ProdukcjaModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="ProdukcjaModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="ProdukcjaModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="ProdukcjaModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProdukcjaModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="ProdukcjaModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProdukcjaModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="ProdukcjaModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="ProdukcjaModel.Store.sp_upgraddiagrams" />
+    <FunctionImportMapping FunctionImportName="spBilingGenerujDowolnaNaleznosc" FunctionName="ProdukcjaModel.Store.spBilingGenerujDowolnaNaleznosc">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProdukcjaModel.spBilingGenerujDowolnaNaleznosc_Result">
+          <ScalarProperty Name="NazwaTransakcji" ColumnName="NazwaTransakcji" />
+          <ScalarProperty Name="CzyTransakcja" ColumnName="CzyTransakcja" />
+          <ScalarProperty Name="SavePoint" ColumnName="SavePoint" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spBilingGenerujNaleznosci" FunctionName="ProdukcjaModel.Store.spBilingGenerujNaleznosci">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProdukcjaModel.spBilingGenerujNaleznosci_Result">
+          <ScalarProperty Name="NazwaTransakcji" ColumnName="NazwaTransakcji" />
+          <ScalarProperty Name="CzyTransakcja" ColumnName="CzyTransakcja" />
+          <ScalarProperty Name="SavePoint" ColumnName="SavePoint" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spBilingRozdzielWplateBankowa" FunctionName="ProdukcjaModel.Store.spBilingRozdzielWplateBankowa">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProdukcjaModel.spBilingRozdzielWplateBankowa_Result">
+          <ScalarProperty Name="NazwaTransakcji" ColumnName="NazwaTransakcji" />
+          <ScalarProperty Name="CzyTransakcja" ColumnName="CzyTransakcja" />
+          <ScalarProperty Name="SavePoint" ColumnName="SavePoint" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spBilingRozliczNaleznosciNierozliczone" FunctionName="ProdukcjaModel.Store.spBilingRozliczNaleznosciNierozliczone">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProdukcjaModel.spBilingRozliczNaleznosciNierozliczone_Result">
+          <ScalarProperty Name="NazwaTransakcji" ColumnName="NazwaTransakcji" />
+          <ScalarProperty Name="CzyTransakcja" ColumnName="CzyTransakcja" />
+          <ScalarProperty Name="SavePoint" ColumnName="SavePoint" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spBilingWstawNowegoKlienta" FunctionName="ProdukcjaModel.Store.spBilingWstawNowegoKlienta">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProdukcjaModel.spBilingWstawNowegoKlienta_Result">
+          <ScalarProperty Name="NazwaTransakcji" ColumnName="NazwaTransakcji" />
+          <ScalarProperty Name="CzyTransakcja" ColumnName="CzyTransakcja" />
+          <ScalarProperty Name="SavePoint" ColumnName="SavePoint" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spBilingWstawWplateBankowaOnline" FunctionName="ProdukcjaModel.Store.spBilingWstawWplateBankowaOnline">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProdukcjaModel.spBilingWstawWplateBankowaOnline_Result">
+          <ScalarProperty Name="NazwaTransakcji" ColumnName="NazwaTransakcji" />
+          <ScalarProperty Name="CzyTransakcja" ColumnName="CzyTransakcja" />
+          <ScalarProperty Name="SavePoint" ColumnName="SavePoint" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spBilingZaladujNowaSprzedaz" FunctionName="ProdukcjaModel.Store.spBilingZaladujNowaSprzedaz">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="ProdukcjaModel.spBilingZaladujNowaSprzedaz_Result">
+          <ScalarProperty Name="NazwaTransakcji" ColumnName="NazwaTransakcji" />
+          <ScalarProperty Name="CzyTransakcja" ColumnName="CzyTransakcja" />
+          <ScalarProperty Name="SavePoint" ColumnName="SavePoint" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="ProdukcjaModel.AspNetUsers">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IdKontraktu" ColumnName="IdKontraktu" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
